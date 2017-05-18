@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+<p>輸入2017日期算出是當年度第幾天</p>
+<form action="/action_page.php">
+Month:
+<input type="text" id="month" name="month" value="" size=2>
+Date:
+<input type="text" id="date" name="date" value="" size=7>
+
+<input type="button" id="button" name="button" value="計算">
+<br><br>
+<div id="debug"></div>
+</form>
+
+<script>
+ var m=[31,28,31,30,31,30,31,31,30,31,30,31];
+ $("#button").click(function()
+ {
+  $("#debug").empty();
+  var a=$("#month").prop("value");
+  var b=$("#date").prop("value");
+  var j=0;
+  var sum=0;
+  for(var i=0;i<a-1;i++)
+  {
+   j+=m[i];  
+  }
+  sum=j+b*1;
+  $("#debug").append(sum+"天");
+ })
+ 
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+<p>輸入西元/月/日期算出是當年度第幾天</p>
+<form action="/action_page.php">
+Year:
+<input type="text" id="year" name="year" value="" size=2>
+Month:
+<input type="text" id="month" name="month" value="" size=2>
+Date:
+<input type="text" id="date" name="date" value="" size=2>
+
+<input type="button" id="button" name="button" value="計算">
+<br><br>
+<div id="debug"></div>
+</form>
+
+<script>
+ var m=[31,28,31,30,31,30,31,31,30,31,30,31];
+ var n=[31,29,31,30,31,30,31,31,30,31,30,31];
+ $("#button").click(function()
+ {
+  $("#debug").empty();
+  var a=$("#year").prop("value");
+  var b=$("#month").prop("value");
+  var c=$("#date").prop("value");
+  var j=0;
+  var sum=0;
+  for(var i=0;i<b-1;i++)
+  {
+   if((a%400==0)||((a%4==0)&&(a%100!==0)))
+   {
+    j+=n[i];
+   }
+   else
+   {
+    j+=m[i];   
+   }
+  }
+  sum=j+c*1;
+  $("#debug").append(sum+"天");
+ })
+ 
+</script>
+</body>
+</html>
